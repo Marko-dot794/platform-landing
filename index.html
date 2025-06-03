@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Бонус до 2000₽</title>
   <style>
     body {
@@ -14,7 +14,6 @@
       align-items: center;
       height: 100vh;
     }
-
     .popup {
       background: white;
       border-radius: 12px;
@@ -24,37 +23,31 @@
       width: 100%;
       text-align: center;
     }
-
     .popup h1 {
       font-size: 20px;
       margin-bottom: 12px;
       color: #000;
     }
-
     .popup p {
       font-size: 15px;
       margin: 8px 0;
     }
-
     .screenshot {
       width: 100%;
       border-radius: 8px;
       margin: 10px 0;
     }
-
     .timer {
       font-weight: bold;
       font-size: 16px;
       color: #d93025;
       margin: 12px 0;
     }
-
     .comments {
       font-size: 14px;
       font-style: italic;
       color: #333;
     }
-
     .cta-button {
       background: #ffcc00;
       color: #000;
@@ -71,28 +64,28 @@
   <div class="popup">
     <h1>💸 2000₽ за регистрацию — акция до 23:59!</h1>
     <p>Максим из Перми закинул 300₽ и вывел 14 700₽ — без верификации</p>
-    <img src="screenshot.jpg" alt="Скриншот перевода" class="screenshot" />
+    <img src="screenshot.jpg" alt="Скриншот" class="screenshot">
     <div class="timer" id="timer">Осталось: 02:00:00</div>
     <div class="comments">Работает! Уже 3-й раз вывожу 💰</div>
     <a class="cta-button" href="https://casino-redirect.vercel.app">Забрать бонус →</a>
   </div>
 
   <script>
-    // Таймер обратного отсчёта на 2 часа
     let seconds = 7200;
-    const timerElement = document.getElementById('timer');
-
     function updateTimer() {
       let h = Math.floor(seconds / 3600).toString().padStart(2, '0');
       let m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
       let s = (seconds % 60).toString().padStart(2, '0');
-      timerElement.textContent = Осталось: ${h}:${m}:${s};
-      if (seconds > 0) {
+
+      if (seconds >= 0) {
+        document.getElementById("timer").innerText = Осталось: ${h}:${m}:${s};
         seconds--;
-        setTimeout(updateTimer, 1000);
+      } else {
+        document.getElementById("timer").innerText = "Акция завершена";
       }
     }
 
+    setInterval(updateTimer, 1000);
     updateTimer();
   </script>
 </body>
