@@ -64,7 +64,7 @@
   <div class="popup">
     <h1>💸 2000₽ за регистрацию — акция до 23:59!</h1>
     <p>Максим из Перми закинул 300₽ и вывел 14 700₽ — без верификации</p>
-    <img src="screenshot.jpg" alt="Скриншот" class="screenshot">
+    <img src="screenshot.png" alt="Скриншот" class="screenshot">
     <div class="timer" id="timer">Осталось: 02:00:00</div>
     <div class="comments">Работает! Уже 3-й раз вывожу 💰</div>
     <a class="cta-button" href="https://casino-redirect.vercel.app">Забрать бонус →</a>
@@ -73,20 +73,14 @@
   <script>
     let seconds = 7200;
     function updateTimer() {
-      let h = Math.floor(seconds / 3600).toString().padStart(2, '0');
-      let m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
-      let s = (seconds % 60).toString().padStart(2, '0');
-
-      if (seconds >= 0) {
-        document.getElementById("timer").innerText = Осталось: ${h}:${m}:${s};
-        seconds--;
-      } else {
-        document.getElementById("timer").innerText = "Акция завершена";
-      }
+      const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
+      const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+      const s = (seconds % 60).toString().padStart(2, '0');
+      document.getElementById('timer').textContent = Осталось: ${h}:${m}:${s};
+      if (seconds > 0) seconds--;
     }
-
-    setInterval(updateTimer, 1000);
     updateTimer();
+    setInterval(updateTimer, 1000);
   </script>
 </body>
 </html>
